@@ -1,0 +1,362 @@
+.admin-assignments-page {
+  padding: 3rem 0;
+  min-height: calc(100vh - 5rem);
+}
+
+.admin-header {
+  border-bottom: 1px solid var(--surface-200);
+  padding-bottom: 2rem;
+}
+
+/* Forms */
+.assignment-form-card {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2.5rem;
+}
+
+.form-help {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+  margin-top: 0.25rem;
+}
+
+.checkbox-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: pointer;
+}
+
+.checkbox-container input {
+  width: 1.25rem;
+  height: 1.25rem;
+  cursor: pointer;
+  accent-color: var(--primary-600);
+}
+
+.checkbox-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+/* Assignments Grid */
+.assignments-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.assignment-card {
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.assignment-card-body {
+  padding: 1.5rem;
+}
+
+.status-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-full);
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.status-pill.active {
+  background-color: #d1fae5;
+  color: #059669;
+}
+
+.status-pill.inactive {
+  background-color: var(--surface-100);
+  color: var(--text-secondary);
+}
+
+.due-date-badge {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.85rem;
+  color: #dc2626;
+  font-weight: 600;
+  padding: 0.25rem 0.75rem;
+  background-color: #fee2e2;
+  border-radius: var(--radius-full);
+}
+
+.assignment-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.assignment-desc {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.assignment-meta-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.meta-info-item {
+  display: flex;
+  flex-direction: column;
+}
+
+.meta-label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.meta-value {
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.meta-value svg {
+  color: var(--primary-500);
+}
+
+.assignment-card-footer {
+  padding: 1rem 1.5rem;
+  background-color: var(--surface-50);
+}
+
+.action-group {
+  display: flex;
+  gap: 0.5rem;
+}
+
+/* Tooltips */
+.tooltip-trigger {
+  position: relative;
+}
+
+.btn-icon-only {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.5rem;
+}
+
+/* Modal Styling */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(4px);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 2rem;
+}
+
+.modal-card {
+  width: 100%;
+  max-width: 700px;
+  max-height: 90vh;
+  display: flex;
+  flex-direction: column;
+  background: white;
+  padding: 0;
+  box-shadow: var(--shadow-xl);
+}
+
+.modal-header {
+  padding: 1.5rem 2rem;
+  border-bottom: 1px solid var(--surface-200);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.modal-header h3 {
+  margin: 0;
+  font-size: 1.5rem;
+  color: var(--text-primary);
+}
+
+.modal-close-btn {
+  background: transparent;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  transition: color var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.modal-close-btn:hover {
+  color: var(--text-primary);
+}
+
+.modal-body {
+  padding: 2rem;
+  overflow-y: auto;
+}
+
+.assignment-quick-details {
+  border-left: 3px solid var(--primary-400);
+  background-color: var(--primary-50);
+}
+
+.submissions-section .section-title {
+  font-size: 1.25rem;
+  color: var(--text-primary);
+  border-bottom: 2px solid var(--surface-200);
+  padding-bottom: 0.5rem;
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.empty-icon-wrapper {
+  width: 80px;
+  height: 80px;
+  background-color: var(--surface-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  color: var(--text-tertiary);
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+}
+
+/* Form Layout utilities */
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.5rem;
+}
+
+/* Image preview box */
+.preview-image {
+  max-height: 250px;
+  object-fit: cover;
+  transition: transform var(--transition-medium);
+  cursor: pointer;
+}
+
+.preview-image:hover {
+  transform: scale(1.02);
+}
+
+/* Utilities */
+.text-sm { font-size: 0.85rem; }
+.text-xl { font-size: 3rem; }
+.text-right { text-align: right; }
+.opacity-50 { opacity: 0.5; }
+.text-secondary-dark { color: var(--text-primary); }
+.block { display: block; }
+
+.mb-05 { margin-bottom: 0.5rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 1.5rem; }
+.mb-3 { margin-bottom: 2rem; }
+
+.pb-1 { padding-bottom: 1rem; }
+.pb-2 { padding-bottom: 1.5rem; }
+.pt-2 { padding-top: 1.5rem; }
+
+.p-2 { padding: 1.5rem; }
+.p-3 { padding: 2rem; }
+
+.mr-1 { margin-right: 1rem; }
+.ml-1 { margin-left: 1rem; }
+
+.border-top { border-top: 1px solid var(--surface-200); }
+.border-bottom { border-bottom: 1px solid var(--surface-200); }
+
+.bg-surface { background-color: var(--surface-50); }
+
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-column { display: flex; flex-direction: column; }
+.flex-end { display: flex; justify-content: flex-end; }
+.flex-grow { flex-grow: 1; }
+
+.h-100 { height: 100%; }
+.full-width { width: 100%; }
+
+.rounded { border-radius: var(--radius-md); }
+.overflow-hidden { overflow: hidden; }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .admin-assignments-page {
+    padding: 1.5rem 0;
+  }
+  
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+  
+  .assignments-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .admin-header {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  
+  .modal-overlay {
+    padding: 1rem;
+  }
+  
+  .modal-header {
+    padding: 1.25rem 1.5rem;
+  }
+  
+  .modal-body {
+    padding: 1.5rem;
+  }
+}

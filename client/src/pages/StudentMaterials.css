@@ -1,0 +1,192 @@
+.student-materials {
+  padding: 3rem 0;
+  min-height: calc(100vh - 5rem);
+}
+
+.app-header {
+  border-bottom: 1px solid var(--surface-200);
+  padding-bottom: 2rem;
+}
+
+/* Grid Layout */
+.materials-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  gap: 2rem;
+}
+
+/* Document Cards */
+.folder-card {
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.folder-toggle {
+  border: none;
+  background: var(--surface-50);
+  cursor: pointer;
+}
+.folder-toggle:hover {
+  background: var(--surface-100);
+}
+
+/* File Links */
+.file-link {
+  transition: all var(--transition-fast);
+  text-decoration: none;
+  color: inherit;
+}
+
+.link-arrow {
+  transition: transform var(--transition-fast);
+}
+
+.file-link:hover .link-arrow {
+  transform: translateX(4px);
+  color: var(--primary-500);
+}
+
+.hover-lift:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+  background-color: var(--surface-100);
+}
+
+.file-icon-wrapper {
+  width: 2.5rem;
+  height: 2.5rem;
+  flex-shrink: 0;
+}
+
+.file-icon {
+  font-size: 1.2rem;
+}
+
+.flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.rounded-full {
+  border-radius: 50%;
+}
+
+/* Empty States */
+.empty-state {
+  text-align: center;
+  padding: 4rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  grid-column: 1 / -1;
+}
+
+.empty-icon-wrapper {
+  width: 5rem;
+  height: 5rem;
+  background-color: var(--surface-100);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.empty-icon {
+  font-size: 2.5rem;
+  color: var(--text-tertiary);
+}
+
+.empty-state h3 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.5rem;
+}
+
+.empty-state p {
+  color: var(--text-secondary);
+}
+
+.border-dashed {
+  border: 1px dashed var(--surface-300);
+}
+
+/* Utilities */
+.line-clamp-1 {
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.gap-05 { gap: 0.5rem; }
+.gap-1 { gap: 1rem; }
+
+.text-xs { font-size: 0.75rem; }
+.text-sm { font-size: 0.85rem; }
+.text-left { text-align: left; }
+
+.font-weight-bold { font-weight: 700; }
+
+.w-full { width: 100%; }
+
+.mb-05 { margin-bottom: 0.5rem; }
+.mb-1 { margin-bottom: 1rem; }
+.mb-2 { margin-bottom: 1.5rem; }
+.mb-3 { margin-bottom: 2rem; }
+.mt-0 { margin-top: 0; }
+.mt-3 { margin-top: 2rem; }
+
+.p-0 { padding: 0; }
+.p-1 { padding: 1rem; }
+.p-2 { padding: 1.5rem; }
+.p-3 { padding: 2rem; }
+
+.pb-1 { padding-bottom: 1rem; }
+
+.ml-1 { margin-left: 1rem; }
+
+.border-bottom { border-bottom: 1px solid var(--surface-200); }
+.border-light { border: 1px solid var(--surface-200); }
+
+.bg-surface { background-color: var(--surface-50); }
+.bg-primary-50 { background-color: var(--primary-50); }
+.bg-primary-100 { background-color: #dbeafe; }
+
+.flex-between { display: flex; justify-content: space-between; align-items: center; }
+.flex-column { display: flex; flex-direction: column; }
+.flex-row { display: flex; flex-direction: row; }
+.flex-grow { flex-grow: 1; }
+.align-center { align-items: center; }
+.justify-center { display: flex; justify-content: center; align-items: center; }
+
+.h-100 { height: 100%; }
+.full-width { width: 100%; }
+
+.rounded { border-radius: var(--radius-md); }
+.text-center { text-align: center; }
+.text-decoration-none { text-decoration: none; }
+
+/* Colors */
+.text-danger { color: #ef4444; } /* pdf */
+.text-warning { color: #f59e0b; } /* ppt */
+.text-primary { color: #3b82f6; } /* doc */
+.text-success { color: #10b981; } /* xls */
+.text-secondary { color: var(--text-secondary); }
+.text-tertiary { color: var(--text-tertiary); }
+
+.transition { transition: all var(--transition-fast); }
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .student-materials {
+    padding: 1.5rem 0;
+  }
+  
+  .materials-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+}
+

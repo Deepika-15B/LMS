@@ -1,0 +1,355 @@
+.home {
+  display: flex;
+  flex-direction: column;
+}
+
+/* --- Hero Section --- */
+.hero {
+  position: relative;
+  min-height: calc(100vh - 5rem);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+  background-color: var(--surface-50);
+}
+
+.hero-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at top right, var(--primary-50), transparent 50%),
+              radial-gradient(circle at bottom left, rgba(16, 185, 129, 0.05), transparent 50%);
+  z-index: 0;
+}
+
+.hero-container {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 4rem;
+}
+
+.hero-content {
+  flex: 1.2;
+  max-width: 600px;
+}
+
+.hero-title {
+  font-size: 4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  margin-bottom: 2.5rem;
+  line-height: 1.6;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.cta-btn {
+  padding: 1rem 2.5rem;
+  font-size: 1.1rem;
+}
+
+.secondary-btn {
+  background: var(--surface-50);
+}
+
+.hero-visual {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.visual-card {
+  width: 320px;
+  height: 320px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1), rgba(16, 185, 129, 0.1));
+  box-shadow: var(--shadow-xl);
+  animation: float 6s ease-in-out infinite;
+}
+
+.visual-icon {
+  font-size: 8rem;
+  color: var(--primary-600);
+  filter: drop-shadow(0 10px 15px rgba(99, 102, 241, 0.3));
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* --- Generic Section Styles --- */
+.section-header {
+  margin-bottom: 3.5rem;
+}
+
+.section-header.split {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.section-title {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.section-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-tertiary);
+}
+
+/* --- Stats Section --- */
+.stats-section {
+  padding: 6rem 0;
+  background-color: var(--surface-50);
+  border-top: 1px solid var(--surface-200);
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 2rem;
+}
+
+.stat-card {
+  padding: 2.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stat-icon-wrapper {
+  width: 64px;
+  height: 64px;
+  border-radius: var(--radius-xl);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
+.stat-icon-wrapper.users { background: #e0e7ff; color: #4f46e5; }
+.stat-icon-wrapper.notes { background: #dcfce7; color: #10b981; }
+.stat-icon-wrapper.courses { background: #fee2e2; color: #ef4444; }
+.stat-icon-wrapper.community { background: #fef3c7; color: #f59e0b; }
+
+.stat-card h3 {
+  font-size: 2.5rem;
+  margin-bottom: 0.25rem;
+}
+
+.stat-card p {
+  color: var(--text-tertiary);
+  font-weight: 500;
+  margin: 0;
+}
+
+/* --- Features Section --- */
+.features-section {
+  padding: 6rem 0;
+  background-color: var(--surface-100);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.feature-card {
+  padding: 3rem 2rem;
+  text-align: left;
+}
+
+.feature-icon {
+  font-size: 2rem;
+  color: var(--primary-500);
+  margin-bottom: 1.5rem;
+  background: var(--primary-50);
+  width: 50px;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--radius-md);
+}
+
+.feature-card h3 {
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.feature-card p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  margin: 0;
+}
+
+/* --- Recent Notes --- */
+.recent-notes-section {
+  padding: 6rem 0;
+  background-color: var(--surface-50);
+}
+
+.notes-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 2rem;
+}
+
+.note-card {
+  display: flex;
+  flex-direction: column;
+  padding: 2rem;
+  height: 100%;
+}
+
+.note-content-wrapper {
+  flex: 1;
+}
+
+.note-title {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.note-excerpt {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+.note-footer {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1rem;
+  border-top: 1px solid var(--surface-200);
+}
+
+.note-meta {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-tertiary);
+}
+
+.meta-icon {
+  color: var(--primary-400);
+}
+
+.read-more-link {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--primary-600);
+}
+
+.read-more-link:hover {
+  text-decoration: underline;
+}
+
+/* --- CTA Section --- */
+.cta-section {
+  padding: 6rem 0;
+  background-color: var(--surface-100);
+}
+
+.cta-panel {
+  background: linear-gradient(135deg, var(--primary-900), var(--primary-700));
+  border-radius: var(--radius-2xl);
+  padding: 5rem 2rem;
+  text-align: center;
+  color: white;
+  border: none;
+}
+
+.cta-panel h2 {
+  color: white;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+}
+
+.cta-panel p {
+  color: var(--primary-100);
+  font-size: 1.2rem;
+  margin-bottom: 2.5rem;
+}
+
+.cta-panel .btn {
+  background: white;
+  color: var(--primary-900);
+}
+
+.cta-panel .btn:hover {
+  background: var(--surface-100);
+}
+
+/* Responsive Overrides */
+@media (max-width: 1024px) {
+  .hero-container {
+    flex-direction: column;
+    text-align: center;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+  }
+  
+  .hero-buttons {
+    justify-content: center;
+  }
+  
+  .section-header.split {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .hero-title {
+    font-size: 2.8rem;
+  }
+  
+  .cta-panel h2 {
+    font-size: 2.2rem;
+  }
+  
+  .visual-card {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .visual-icon {
+    font-size: 5rem;
+  }
+}
