@@ -31,6 +31,19 @@ const AdminMeetings = () => {
     }
   };
 
+  // Build a meeting URL where the joining name is the meeting owner (admin/instructor)
+  const getOwnerMeetingUrl = (meeting) => {
+    const baseUrl = meeting.meetingUrl || '';
+    const ownerName = encodeURIComponent(meeting.instructorName || user?.fullName || 'Instructor');
+
+    // Force English and set default display name for the Jitsi meeting
+    const langParam = "config.defaultLanguage='en'";
+    const nameParam = `userInfo.displayName='${ownerName}'`;
+
+    const separator = baseUrl.includes('#') ? '&' : '#';
+    return `${baseUrl}${separator}${langParam}&${nameParam}`;
+  };
+
   const handleDeleteMeeting = async (meetingId) => {
     if (!window.confirm('Are you sure you want to delete this meeting?')) return;
     
@@ -176,7 +189,7 @@ const AdminMeetings = () => {
                       <div className="meeting-link-wrapper">
                         <span className="detail-label">Meeting Link:</span>
                         <a
-                          href={meeting.meetingUrl}
+                          href={getOwnerMeetingUrl(meeting)}
                           target="_blank"
                           rel="noopener noreferrer"
                           className="btn btn-outline btn-sm"

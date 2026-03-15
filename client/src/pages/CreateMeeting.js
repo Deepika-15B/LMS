@@ -15,6 +15,20 @@ const CreateMeeting = () => {
   const [loadingMeetings, setLoadingMeetings] = useState(true);
   const [meetingsError, setMeetingsError] = useState('');
   const [quizzes, setQuizzes] = useState([]);
+
+  // Static course options to show in dropdown in addition to quizzes
+  const staticCourses = [
+    'MongoDB',
+    'React',
+    'DBMS',
+    'Operating Systems',
+    'Computer Networks',
+    'Data Structures',
+    'Algorithms',
+    'Java',
+    'Python',
+    'Node.js'
+  ];
   
   const [formData, setFormData] = useState({
     title: '',
@@ -61,7 +75,16 @@ const CreateMeeting = () => {
       [name]: value
     }));
     
-    // If a course is selected, update courseName
+    // If a course is selected from dropdown, update courseName when value matches static course name
+    if (name === 'courseId' && staticCourses.includes(value)) {
+      setFormData(prev => ({
+        ...prev,
+        courseName: value
+      }));
+      return;
+    }
+
+    // If a course is selected from quizzes dropdown, update courseName from quiz title
     if (name === 'courseId') {
       const selectedQuiz = quizzes.find(q => q._id === value);
       if (selectedQuiz) {
@@ -207,6 +230,13 @@ const CreateMeeting = () => {
                   className="form-input"
                 >
                   <option value="">Select a course (optional)</option>
+                  {/* Static course options */}
+                  {staticCourses.map((courseName) => (
+                    <option key={courseName} value={courseName}>
+                      {courseName}
+                    </option>
+                  ))}
+                  {/* Dynamic quizzes from backend */}
                   {quizzes.map(quiz => (
                     <option key={quiz._id} value={quiz._id}>
                       {quiz.title}
