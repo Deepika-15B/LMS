@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
+const fs = require('fs');
 const dotenv = require('dotenv');
 const passport = require('passport');
 const session = require('express-session');
@@ -19,6 +20,17 @@ require('./config/passport');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
+
+const uploadPath = path.join(__dirname, 'uploads');
+const assignmentPath = path.join(uploadPath, 'assignments');
+
+if (!fs.existsSync(uploadPath)) {
+  fs.mkdirSync(uploadPath);
+}
+
+if (!fs.existsSync(assignmentPath)) {
+  fs.mkdirSync(assignmentPath);
+}
 
 const allowedOrigins = [
   process.env.CLIENT_URL,
