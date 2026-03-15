@@ -114,7 +114,7 @@ const Home = () => {
               </div>
             ) : (
               <div className="hero-buttons">
-                <Link to={user.role === 'student' ? '/student/dashboard' : '/admin'} className="btn btn-primary btn-large cta-btn">
+                <Link to={user.role === 'student' ? '/student/dashboard' : '/admin/dashboard'} className="btn btn-primary btn-large cta-btn">
                   Go to Dashboard
                 </Link>
               </div>

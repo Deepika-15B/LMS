@@ -197,11 +197,28 @@ router.get('/:id/files/:fileId/download', auth, async (req, res) => {
       return res.status(404).json({ message: 'File not found' });
     }
     
-    const filePath = file.path;
-    if (!fs.existsSync(filePath)) {
+    const uploadsDir = path.join(__dirname, '../uploads/documents');
+
+    // Prefer stored path, but fall back to uploadsDir + filename for portability.
+    const candidates = [
+      file.path,
+      typeof file.path === 'string' ? path.resolve(file.path) : null,
+      file.filename ? path.join(uploadsDir, file.filename) : null,
+      typeof file.path === 'string' ? path.join(uploadsDir, path.basename(file.path)) : null
+    ].filter(Boolean);
+
+    const filePath = candidates.find(p => {
+      try {
+        return fs.existsSync(p);
+      } catch {
+        return false;
+      }
+    });
+
+    if (!filePath) {
       return res.status(404).json({ message: 'File not found on disk' });
     }
-    
+
     res.download(filePath, file.originalName);
   } catch (error) {
     console.error('Error downloading file:', error);

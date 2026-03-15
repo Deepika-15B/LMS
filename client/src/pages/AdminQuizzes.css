@@ -143,10 +143,37 @@
 .btn-icon:hover {
   background-color: var(--surface-200);
 }
-
 .questions-preview ul {
   padding-left: 1.5rem;
   margin-bottom: 0;
+}
+
+.quizzes-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.quizzes-list li {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  background: var(--surface-50);
+  border-radius: var(--radius-md);
+  border-left: 3px solid var(--primary-300);
+  transition: all var(--transition-fast);
+}
+
+.quizzes-list li:hover {
+  background: var(--surface-100);
+  transform: translateX(4px);
+}
+
+.error-message {
+  color: var(--error-600);
+  background: var(--error-100);
+  padding: 0.75rem 1rem;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--error-300);
+  margin-bottom: 1rem;
 }
 
 @media (max-width: 600px) {

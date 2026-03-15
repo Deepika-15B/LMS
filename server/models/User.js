@@ -46,6 +46,11 @@ const userSchema = new mongoose.Schema({
     type: mongoose.Schema.Types.ObjectId,
     ref: 'Quiz'
   }],
+  notificationPrefs: {
+    emailUpdates: { type: Boolean, default: true },
+    quizReminders: { type: Boolean, default: true },
+    liveClassReminders: { type: Boolean, default: true }
+  },
   createdAt: {
     type: Date,
     default: Date.now

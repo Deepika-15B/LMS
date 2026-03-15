@@ -104,9 +104,9 @@ const StudentQuizzes = () => {
                 </div>
 
                 <div className="course-card-footer mt-auto">
-                    <Link to={`/quizzes/${quiz._id}/take`} className="btn btn-primary full-width">
-                      Start Quiz
-                    </Link>
+                  <Link to={`/quizzes/${quiz._id}/take`} className="btn btn-primary full-width">
+                    Start Quiz
+                  </Link>
                 </div>
               </div>
             ))

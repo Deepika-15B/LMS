@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../contexts/AuthContext';
-import { FaBook, FaFolderOpen, FaPlusCircle, FaChalkboardTeacher, FaArrowRight, FaCheckCircle } from 'react-icons/fa';
+import { FaBook, FaFolderOpen, FaPlusCircle, FaChalkboardTeacher, FaArrowRight, FaCheckCircle, FaVideo } from 'react-icons/fa';
 import './AdminDashboard.css';
 
 const AdminDashboard = () => {
@@ -35,6 +35,13 @@ const AdminDashboard = () => {
       icon: <FaBook className="admin-feature-icon text-info" />,
       link: '/admin/quizzes',
       colorClass: 'info'
+    },
+    {
+      title: 'Live Classes',
+      desc: 'Schedule and manage live online classes using Jitsi Meet.',
+      icon: <FaVideo className="admin-feature-icon text-danger" />,
+      link: '/admin/meetings/create',
+      colorClass: 'danger'
     }
   ];
 

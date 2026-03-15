@@ -56,7 +56,28 @@ const StudentDocuments = () => {
       window.URL.revokeObjectURL(url);
     } catch (error) {
       console.error('Error downloading file:', error);
-      alert('Failed to download file: ' + (error.response?.data?.message || 'Unknown error'));
+
+      let message = 'Unknown error';
+      try {
+        if (error.response) {
+          // If backend sent JSON but we requested blob, try to decode it
+          if (error.response.data instanceof Blob) {
+            const text = await error.response.data.text();
+            try {
+              const parsed = JSON.parse(text);
+              message = parsed.message || message;
+            } catch {
+              message = text || message;
+            }
+          } else if (typeof error.response.data === 'object' && error.response.data !== null) {
+            message = error.response.data.message || message;
+          }
+        }
+      } catch (e) {
+        console.error('Error parsing download error response:', e);
+      }
+
+      alert('Failed to download file: ' + message);
     }
   };
 

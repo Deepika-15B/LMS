@@ -21,6 +21,10 @@ import AdminDashboard from './pages/AdminDashboard';
 import AdminQuizzes from './pages/AdminQuizzes';
 import EducatorDocuments from './pages/EducatorDocuments';
 import StudentDocuments from './pages/StudentDocuments';
+import CreateMeeting from './pages/CreateMeeting';
+import LiveClasses from './pages/LiveClasses';
+import AdminMeetings from './pages/AdminMeetings';
+import JitsiMeeting from './pages/JitsiMeeting';
 import './App.css';
 
 function App() {
@@ -116,6 +120,22 @@ function App() {
           <Route 
             path="/student/documents" 
             element={user?.role === 'student' ? <StudentDocuments /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/admin/meetings/create" 
+            element={user?.role === 'admin' ? <CreateMeeting /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/admin/meetings" 
+            element={user?.role === 'admin' ? <AdminMeetings /> : <Navigate to="/" />} 
+          />
+          <Route 
+            path="/student/live-classes" 
+            element={user ? <LiveClasses /> : <Navigate to="/login" />} 
+          />
+          <Route 
+            path="/meeting/:roomId" 
+            element={user ? <JitsiMeeting /> : <Navigate to="/login" />} 
           />
         </Routes>
       </main>

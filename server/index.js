@@ -11,6 +11,7 @@ const userRoutes = require('./routes/users');
 const assignmentRoutes = require('./routes/assignments');
 const documentRoutes = require('./routes/documents');
 const quizRoutes = require('./routes/quizzes');
+const meetingRoutes = require('./routes/meetings');
 
 dotenv.config({ path: path.join(__dirname, '../.env') });
 
@@ -79,6 +80,7 @@ app.use('/api/users', userRoutes);
 app.use('/api/assignments', assignmentRoutes);
 app.use('/api/documents', documentRoutes);
 app.use('/api/quizzes', quizRoutes);
+app.use('/api/meetings', meetingRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

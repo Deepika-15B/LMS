@@ -165,13 +165,18 @@ const AdminQuizzes = () => {
   return (
     <div className="admin-quizzes-page animate-fade-in py-3">
       <div className="container">
-        <div className="flex-between align-center mb-3">
+        <div className="flex-between align-center mb-2">
           <h2>Manage Quizzes</h2>
           {!showForm && (
             <button className="btn btn-primary" onClick={() => setShowForm(true)}>
               <FaPlus /> Create New Quiz
             </button>
           )}
+        </div>
+
+        <div className="quiz-summary mb-3">
+          <span className="text-secondary">Total quizzes posted:&nbsp;</span>
+          <span className="text-bold">{quizzes.length}</span>
         </div>
 
         {error && <div className="error-message mb-2">{error}</div>}
@@ -270,46 +275,11 @@ const AdminQuizzes = () => {
                 <button className="btn btn-primary mt-1" onClick={() => setShowForm(true)}>Create One</button>
               </div>
             ) : (
-              quizzes.map(quiz => (
-                <div key={quiz._id} className="card quiz-list-card glass-panel mb-2">
-                  <div className="quiz-list-header flex-between cursor-pointer" onClick={() => setExpandedQuiz(expandedQuiz === quiz._id ? null : quiz._id)}>
-                    <div className="quiz-list-title">
-                      <h4 className="m-0 flex-row align-center gap-05">
-                        {quiz.title} 
-                        <span className={`status-badge ${quiz.isActive ? 'active' : 'inactive'}`}>
-                          {quiz.isActive ? 'Active' : 'Draft'}
-                        </span>
-                      </h4>
-                      <p className="text-sm text-secondary m-0 mt-05">
-                        {quiz.questions.length} Questions • {quiz.category} • {quiz.level}
-                      </p>
-                    </div>
-                    <div className="quiz-list-actions flex-row gap-1 align-center">
-                      <button className="btn-icon" onClick={(e) => { e.stopPropagation(); editQuiz(quiz); }} title="Edit"><FaEdit className="text-primary" /></button>
-                      <button className="btn-icon" onClick={(e) => { e.stopPropagation(); toggleQuizStatus(quiz._id, quiz.isActive); }} title={quiz.isActive ? 'Deactivate' : 'Activate'}>
-                        {quiz.isActive ? <FaTimesCircle className="text-warning" /> : <FaCheckCircle className="text-success" />}
-                      </button>
-                      <button className="btn-icon" onClick={(e) => { e.stopPropagation(); deleteQuiz(quiz._id); }} title="Delete"><FaTrash className="text-danger" /></button>
-                      {expandedQuiz === quiz._id ? <FaChevronUp className="text-secondary" /> : <FaChevronDown className="text-secondary" />}
-                    </div>
-                  </div>
-                  
-                  {expandedQuiz === quiz._id && (
-                    <div className="quiz-list-details border-top mt-1 pt-1">
-                      <p className="text-sm">{quiz.description}</p>
-                      <div className="questions-preview">
-                        <strong>Questions Preview:</strong>
-                        <ul className="text-sm mt-05">
-                          {quiz.questions.slice(0, 3).map((q, i) => (
-                            <li key={i}>{q.questionText}</li>
-                          ))}
-                          {quiz.questions.length > 3 && <li><em>...and {quiz.questions.length - 3} more</em></li>}
-                        </ul>
-                      </div>
-                    </div>
-                  )}
-                </div>
-              ))
+              <ul>
+                {quizzes.map(quiz => (
+                  <li key={quiz._id}>{quiz.title}</li>
+                ))}
+              </ul>
             )}
           </div>
         )}

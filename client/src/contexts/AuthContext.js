@@ -115,6 +115,18 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
+  const changePassword = async ({ currentPassword, newPassword }) => {
+    try {
+      const response = await axios.post('/api/auth/change-password', { currentPassword, newPassword });
+      return { success: true, message: response.data?.message || 'Password updated successfully' };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.response?.data?.message || 'Failed to update password'
+      };
+    }
+  };
+
   const loginWithGoogle = () => {
     window.location.href = `${apiUrl}/auth/google`;
   };
@@ -126,6 +138,7 @@ export const AuthProvider = ({ children }) => {
     register,
     logout,
     updateProfile,
+    changePassword,
     loginWithGoogle
   };
 

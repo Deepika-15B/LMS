@@ -197,6 +197,20 @@
   color: #10b981;
 }
 
+.action-icon-wrapper.red {
+  background-color: #fee2e2;
+  color: #ef4444;
+}
+
+.live-meeting-card {
+  border-left: 4px solid #ef4444;
+  background: linear-gradient(135deg, var(--bg-primary) 0%, #fef2f2 100%);
+}
+
+.live-meeting-card:hover {
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.2);
+}
+
 .action-content h3 {
   font-size: 1.05rem;
   font-weight: 600;

@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
-import { FaUser, FaEnvelope, FaCalendar, FaEdit, FaSave, FaTimes, FaShieldAlt } from 'react-icons/fa';
+import { FaUser, FaEnvelope, FaCalendar, FaEdit, FaSave, FaTimes } from 'react-icons/fa';
 import './Profile.css';
 
 const Profile = () => {
-  const { user, updateProfile } = useAuth();
+  const { user, updateProfile, changePassword } = useAuth();
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
     fullName: user?.fullName || '',
@@ -13,6 +13,9 @@ const Profile = () => {
   const [loading, setLoading] = useState(false);
   const [message, setMessage] = useState('');
   const [messageType, setMessageType] = useState('');
+
+
+  const isGoogleAccount = useMemo(() => Boolean(user?.googleId) || !user?.password, [user]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -51,6 +54,11 @@ const Profile = () => {
     setMessage('');
   };
 
+
+
+
+
+
   const formatDate = (dateString) => {
     return new Date(dateString).toLocaleDateString('en-US', {
       year: 'numeric',
@@ -80,7 +88,7 @@ const Profile = () => {
                   <h2>{user?.fullName}</h2>
                   <div className="badge-container">
                      <span className={`role-badge ${user?.role === 'admin' ? 'admin' : 'student'}`}>
-                       {user?.role === 'admin' ? <><FaShieldAlt /> Administrator</> : 'Student'}
+                       {user?.role === 'admin' ? 'Administrator' : 'Student'}
                      </span>
                   </div>
                 </div>
@@ -184,28 +192,6 @@ const Profile = () => {
             )}
           </div>
           
-          {/* Settings Section Placeholder */}
-          <div className="card settings-card mt-2">
-            <div className="section-header">
-              <h3 className="section-title">Account Settings</h3>
-            </div>
-            <div className="settings-list">
-               <div className="setting-item">
-                  <div className="setting-info">
-                     <h4>Password & Security</h4>
-                     <p>Manage your password and security preferences.</p>
-                  </div>
-                  <button className="btn btn-outline btn-sm">Update</button>
-               </div>
-               <div className="setting-item">
-                  <div className="setting-info">
-                     <h4>Notifications</h4>
-                     <p>Control what emails and alerts you receive.</p>
-                  </div>
-                  <button className="btn btn-outline btn-sm">Manage</button>
-               </div>
-            </div>
-          </div>
         </div>
       </div>
     </div>
