@@ -3,6 +3,7 @@ const Meeting = require('../models/Meeting');
 const User = require('../models/User');
 const Quiz = require('../models/Quiz');
 const { auth, adminAuth } = require('../middleware/auth');
+const mongoose = require('mongoose');
 
 const router = express.Router();
 
@@ -49,7 +50,7 @@ router.post('/', adminAuth, async (req, res) => {
     const meeting = new Meeting({
       title,
       courseName,
-      course: courseId || null,
+       course: mongoose.Types.ObjectId.isValid(courseId) ? courseId : null,
       description: description || '',
       scheduledDate: scheduledDateTime,
       scheduledTime,
