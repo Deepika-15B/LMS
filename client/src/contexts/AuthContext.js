@@ -135,9 +135,8 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginWithGoogle = () => {
-    window.location.href = `${apiUrl}/auth/google`;
-  };
-
+  window.location.href = "https://lms-hjb6.onrender.com/api/auth/google";
+};
   const value = {
     user,
     loading,
