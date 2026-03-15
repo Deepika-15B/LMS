@@ -62,10 +62,7 @@ router.post('/', adminAuth, async (req, res) => {
     });
 
     await meeting.save();
-    await meeting.populate('instructor', 'fullName username email');
-    if (meeting.course) {
-      await meeting.populate('course', 'title');
-    }
+await meeting.populate('instructor', 'fullName username email');
 
     res.status(201).json(meeting);
   } catch (error) {
@@ -89,7 +86,6 @@ router.get('/student', auth, async (req, res) => {
       status: { $in: ['scheduled', 'ongoing'] }
     })
       .populate('instructor', 'fullName username email')
-      .populate('course', 'title')
       .sort({ scheduledDate: 1, scheduledTime: 1 });
 
     console.log(`Found ${meetings.length} meetings for student`); // Debug log
@@ -110,7 +106,6 @@ router.get('/instructor', adminAuth, async (req, res) => {
   try {
     const meetings = await Meeting.find({ instructor: req.user._id })
       .populate('instructor', 'fullName username email')
-      .populate('course', 'title')
       .populate('enrolledStudents', 'fullName username email')
       .sort({ scheduledDate: -1, scheduledTime: -1 });
 
@@ -130,7 +125,7 @@ router.get('/:id', auth, async (req, res) => {
   try {
     const meeting = await Meeting.findById(req.params.id)
       .populate('instructor', 'fullName username email')
-      .populate('course', 'title')
+
       .populate('enrolledStudents', 'fullName username email');
 
     if (!meeting) {
@@ -212,7 +207,6 @@ router.put('/:id', adminAuth, async (req, res) => {
 
     await meeting.save();
     await meeting.populate('instructor', 'fullName username email');
-    await meeting.populate('course', 'title');
     await meeting.populate('enrolledStudents', 'fullName username email');
 
     res.json(meeting);
@@ -274,7 +268,7 @@ router.post('/:id/join', auth, async (req, res) => {
 
     // Return meeting details with access granted
     await meeting.populate('instructor', 'fullName username email');
-    await meeting.populate('course', 'title');
+      await meeting.populate('enrolledStudents', 'fullName username email');
 
     res.json({
       message: 'Access granted',
