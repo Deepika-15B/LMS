@@ -13,7 +13,7 @@ const meetingSchema = new mongoose.Schema({
     trim: true
   },
   course: {
-    type: mongoose.Schema.Types.ObjectId,
+    type: String,
     ref: 'Quiz',
     required: false // Optional, in case course doesn't exist in system
   },
