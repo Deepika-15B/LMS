@@ -17,8 +17,15 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(localStorage.getItem('token'));
 
   const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
-  // Use the origin as baseURL. All paths in the app must start with /api
-  axios.defaults.baseURL = 'http://localhost:5000'; 
+
+  // Configure axios base URL:
+  // - In development, proxy all /api calls to localhost:5000 via CRA proxy
+  // - In production (Vercel), point directly to the Render backend URL
+  if (process.env.NODE_ENV === 'production') {
+    axios.defaults.baseURL = 'https://lms-hjb6.onrender.com';
+  } else {
+    axios.defaults.baseURL = 'http://localhost:5000';
+  }
 
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
