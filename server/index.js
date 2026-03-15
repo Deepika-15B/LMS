@@ -38,16 +38,19 @@ app.use((req, res, next) => {
 app.use(cors({
   origin: function(origin, callback) {
     if (!origin) return callback(null, true);
-    
-    const normalizedOrigin = origin.replace(/\/$/, "");
-    const isAllowed = allowedOrigins.some(ao => ao.replace(/\/$/, "") === normalizedOrigin);
-    
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      console.error('CORS blocked origin:', origin);
-      callback(new Error('Not allowed by CORS'));
+
+    // allow localhost
+    if (allowedOrigins.includes(origin)) {
+      return callback(null, true);
     }
+
+    // allow all vercel deployments
+    if (origin.endsWith('.vercel.app')) {
+      return callback(null, true);
+    }
+
+    console.log("Blocked by CORS:", origin);
+    return callback(new Error("Not allowed by CORS"));
   },
   credentials: true
 }));
