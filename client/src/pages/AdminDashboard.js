@@ -11,28 +11,28 @@ const AdminDashboard = () => {
     {
       title: 'Manage Assignments',
       desc: 'Review and grade student assignment submissions.',
-      icon: <FaChalkboardTeacher className="feature-icon text-primary" />,
+      icon: <FaChalkboardTeacher className="admin-feature-icon text-primary" />,
       link: '/admin/assignments',
       colorClass: 'primary'
     },
     {
       title: 'Course Resources',
       desc: 'Create, edit, and organize public course notes.',
-      icon: <FaPlusCircle className="feature-icon text-success" />,
+      icon: <FaPlusCircle className="admin-feature-icon text-success" />,
       link: '/create-note',
       colorClass: 'success'
     },
     {
       title: 'Educator Documents',
       desc: 'Manage internal documents shared with educators.',
-      icon: <FaFolderOpen className="feature-icon text-warning" />,
+      icon: <FaFolderOpen className="admin-feature-icon text-warning" />,
       link: '/admin/documents',
       colorClass: 'warning'
     },
     {
       title: 'Manage Courses',
       desc: 'Oversee active student courses and curriculums.',
-      icon: <FaBook className="feature-icon text-info" />,
+      icon: <FaBook className="admin-feature-icon text-info" />,
       link: '/student/courses',
       colorClass: 'info'
     }
