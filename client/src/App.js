@@ -13,11 +13,12 @@ import EditNote from './pages/EditNote';
 import Profile from './pages/Profile';
 import AdminAssignments from './pages/AdminAssignments';
 import StudentDashboard from './pages/StudentDashboard';
-import StudentCourses from './pages/StudentCourses';
+import StudentQuizzes from './pages/StudentQuizzes';
 import CourseQuiz from './pages/CourseQuiz';
 import Assignments from './pages/Assignments';
 import Prerequisites from './pages/Prerequisites';
 import AdminDashboard from './pages/AdminDashboard';
+import AdminQuizzes from './pages/AdminQuizzes';
 import EducatorDocuments from './pages/EducatorDocuments';
 import StudentDocuments from './pages/StudentDocuments';
 import './App.css';
@@ -77,6 +78,10 @@ function App() {
             element={user?.role === 'admin' ? <AdminDashboard /> : <Navigate to="/" />} 
           />
           <Route 
+            path="/admin/quizzes" 
+            element={user?.role === 'admin' ? <AdminQuizzes /> : <Navigate to="/" />} 
+          />
+          <Route 
             path="/admin/assignments" 
             element={user?.role === 'admin' ? <AdminAssignments /> : <Navigate to="/" />} 
           />
@@ -85,11 +90,11 @@ function App() {
             element={user?.role === 'student' ? <StudentDashboard /> : <Navigate to="/" />} 
           />
           <Route 
-            path="/student/courses" 
-            element={(user?.role === 'student' || user?.role === 'admin') ? <StudentCourses /> : <Navigate to="/" />} 
+            path="/student/quizzes" 
+            element={(user?.role === 'student' || user?.role === 'admin' || user?.role === 'educator') ? <StudentQuizzes /> : <Navigate to="/" />} 
           />
           <Route 
-            path="/courses/:courseId/quiz" 
+            path="/quizzes/:courseId/take" 
             element={user?.role === 'student' ? <CourseQuiz /> : <Navigate to="/" />} 
           />
           <Route 

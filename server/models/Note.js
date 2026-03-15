@@ -33,7 +33,7 @@ const noteSchema = new mongoose.Schema({
   },
   course: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course',
+    ref: 'Quiz',
     required: false
   },
   author: {

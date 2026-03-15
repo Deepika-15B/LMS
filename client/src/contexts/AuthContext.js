@@ -16,6 +16,10 @@ export const AuthProvider = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const [token, setToken] = useState(localStorage.getItem('token'));
 
+  const apiUrl = process.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+  // Use the origin as baseURL. All paths in the app must start with /api
+  axios.defaults.baseURL = 'http://localhost:5000'; 
+
   if (token) {
     axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   }
@@ -112,7 +116,7 @@ export const AuthProvider = ({ children }) => {
   };
 
   const loginWithGoogle = () => {
-    window.location.href = 'http://localhost:5000/api/auth/google';
+    window.location.href = `${apiUrl}/auth/google`;
   };
 
   const value = {

@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
   },
   enrolledCourses: [{
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Course'
+    ref: 'Quiz'
   }],
   createdAt: {
     type: Date,

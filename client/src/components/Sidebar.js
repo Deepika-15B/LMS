@@ -71,7 +71,7 @@ const Sidebar = ({ onToggle }) => {
       return [
         ...baseItems,
         { path: '/educator/dashboard', label: 'Dashboard', icon: FaChartBar },
-        { path: '/educator/courses', label: 'Quiz', icon: FaGraduationCap },
+        { path: '/educator/quizzes', label: 'Quiz', icon: FaGraduationCap },
         { path: '/educator/documents', label: 'Documents', icon: FaFileAlt },
         { path: '/create-note', label: 'Create Note', icon: FaPlus },
         { path: '/profile', label: 'Profile', icon: FaUser }
@@ -82,7 +82,7 @@ const Sidebar = ({ onToggle }) => {
       return [
         ...baseItems,
         { path: '/student/dashboard', label: 'Dashboard', icon: FaChartBar },
-        { path: '/student/courses', label: 'Quiz', icon: FaGraduationCap },
+        { path: '/student/quizzes', label: 'Quiz', icon: FaGraduationCap },
         { path: '/student/documents', label: 'Documents', icon: FaFileAlt },
         { path: '/profile', label: 'Profile', icon: FaUser }
       ];

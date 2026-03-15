@@ -30,10 +30,10 @@ const AdminDashboard = () => {
       colorClass: 'warning'
     },
     {
-      title: 'Manage Courses',
-      desc: 'Oversee active student courses and curriculums.',
+      title: 'Manage Quizzes',
+      desc: 'Create, edit, and organize dynamic quizzes for students.',
       icon: <FaBook className="admin-feature-icon text-info" />,
-      link: '/student/courses',
+      link: '/admin/quizzes',
       colorClass: 'info'
     }
   ];

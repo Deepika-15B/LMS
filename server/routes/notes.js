@@ -1,6 +1,5 @@
 const express = require('express');
 const Note = require('../models/Note');
-const Course = require('../models/Course');
 const { auth, adminAuth } = require('../middleware/auth');
 
 const router = express.Router();
@@ -47,7 +46,6 @@ router.get('/', auth, async (req, res) => {
 
     const notes = await Note.find(query)
       .populate('author', 'username fullName')
-      .populate('course', 'title code')
       .populate('accessList.user', 'username fullName')
       .populate('comments.user', 'username fullName')
       .sort({ createdAt: -1 });
@@ -62,7 +60,6 @@ router.get('/:id', auth, async (req, res) => {
   try {
     const note = await Note.findById(req.params.id)
       .populate('author', 'username fullName')
-      .populate('course', 'title code')
       .populate('accessList.user', 'username fullName')
       .populate('comments.user', 'username fullName');
 
@@ -88,19 +85,11 @@ router.get('/:id', auth, async (req, res) => {
 
 router.post('/', adminAuth, async (req, res) => {
   try {
-    const { title, content, course, tags, isPublic, accessList } = req.body;
-
-    if (course) {
-      const courseExists = await Course.findById(course);
-      if (!courseExists) {
-        return res.status(404).json({ message: 'Course not found' });
-      }
-    }
+    const { title, content, tags, isPublic, accessList } = req.body;
 
     const note = new Note({
       title,
       content,
-      course,
       author: req.user._id,
       tags: tags || [],
       isPublic: isPublic !== undefined ? isPublic : true,
@@ -110,8 +99,7 @@ router.post('/', adminAuth, async (req, res) => {
     await note.save();
 
     const populatedNote = await Note.findById(note._id)
-      .populate('author', 'username fullName')
-      .populate('course', 'title code');
+      .populate('author', 'username fullName');
 
     res.status(201).json(populatedNote);
   } catch (error) {
@@ -151,8 +139,7 @@ router.put('/:id', auth, async (req, res) => {
       req.params.id,
       req.body,
       { new: true }
-    ).populate('author', 'username fullName')
-     .populate('course', 'title code');
+    ).populate('author', 'username fullName');
 
     res.json(updatedNote);
   } catch (error) {

@@ -90,8 +90,8 @@ const StudentDashboard = () => {
                     <FaBook className="empty-icon text-gradient" />
                   </div>
                   <h3>No notes available yet</h3>
-                  <p>Start exploring courses to find study materials.</p>
-                  <Link to="/notes" className="btn btn-primary">
+                  <p>Start exploring quizzes to test your knowledge.</p>
+                  <Link to="/student/quizzes" className="btn btn-primary">
                     Browse Catalog
                   </Link>
                 </div>

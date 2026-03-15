@@ -19,11 +19,12 @@ const Home = () => {
     const fetchStats = async () => {
       try {
         if (user) {
-          const [notesResponse, usersResponse] = await Promise.all([
+          const [notesResponse, usersResponse, quizzesResponse] = await Promise.all([
             axios.get('/api/notes'),
             user?.role === 'admin' 
               ? axios.get('/api/users/stats/overview')
-              : axios.get('/api/users/stats/basic')
+              : axios.get('/api/users/stats/basic'),
+            axios.get('/api/quizzes')
           ]);
 
           const notes = notesResponse.data;
@@ -32,19 +33,20 @@ const Home = () => {
           setStats({
             totalUsers: usersResponse?.data?.totalUsers || 0,
             totalNotes: notes.length,
-            totalCourses: 0, 
+            totalQuizzes: quizzesResponse?.data?.length || 0, 
             recentNotes
           });
         } else {
-          const [notesResponse, usersResponse] = await Promise.all([
+          const [notesResponse, usersResponse, quizzesResponse] = await Promise.all([
             axios.get('/api/notes/stats/public'),
-            axios.get('/api/users/stats/public')
+            axios.get('/api/users/stats/public'),
+            axios.get('/api/quizzes') // Fallback fetch
           ]);
 
           setStats({
             totalUsers: usersResponse?.data?.totalUsers || 0,
             totalNotes: notesResponse?.data?.totalNotes || 0,
-            totalCourses: 0, 
+            totalQuizzes: quizzesResponse?.data?.length || 0, 
             recentNotes: []
           });
         }
@@ -145,8 +147,8 @@ const Home = () => {
             </div>
             <div className="card stat-card">
               <div className="stat-icon-wrapper courses"><FaGraduationCap /></div>
-              <h3>{stats.totalCourses || 12}+</h3>
-              <p>Active Courses</p>
+              <h3>{stats.totalQuizzes || 0}+</h3>
+              <p>Active Quizzes</p>
             </div>
             <div className="card stat-card">
               <div className="stat-icon-wrapper community"><FaComments /></div>
@@ -222,8 +224,8 @@ const Home = () => {
                 <FaRocket /> Initialize Journey
               </Link>
             ) : (
-              <Link to="/student/courses" className="btn btn-primary btn-large">
-                <FaBook /> Explore Courses
+              <Link to="/student/quizzes" className="btn btn-primary btn-large">
+                <FaBook /> Explore Quizzes
               </Link>
             )}
           </div>

@@ -8,19 +8,46 @@ const path = require('path');
 const authRoutes = require('./routes/auth');
 const noteRoutes = require('./routes/notes');
 const userRoutes = require('./routes/users');
-const courseRoutes = require('./routes/courses');
 const assignmentRoutes = require('./routes/assignments');
 const documentRoutes = require('./routes/documents');
+const quizRoutes = require('./routes/quizzes');
 
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '../.env') });
 
 require('./config/passport');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
 
+const allowedOrigins = [
+  process.env.CLIENT_URL,
+  'http://localhost:3000',
+  'http://localhost:3001',
+  'http://127.0.0.1:3000',
+  'http://127.0.0.1:3001',
+  'https://learnit-48dq.vercel.app'
+].filter(Boolean);
+
+
+app.use((req, res, next) => {
+  console.log(`${req.method} ${req.url} - Origin: ${req.headers.origin}`);
+  next();
+});
+
 app.use(cors({
-  origin: process.env.CLIENT_URL || 'http://localhost:3000',
+  origin: function(origin, callback) {
+    if (!origin) return callback(null, true);
+    
+    const normalizedOrigin = origin.replace(/\/$/, "");
+    const isAllowed = allowedOrigins.some(ao => ao.replace(/\/$/, "") === normalizedOrigin);
+    
+    if (isAllowed) {
+      callback(null, true);
+    } else {
+      console.error('CORS blocked origin:', origin);
+      callback(new Error('Not allowed by CORS'));
+    }
+  },
   credentials: true
 }));
 app.use(express.json());
@@ -49,9 +76,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/learnit',
 app.use('/api/auth', authRoutes);
 app.use('/api/notes', noteRoutes);
 app.use('/api/users', userRoutes);
-app.use('/api/courses', courseRoutes);
 app.use('/api/assignments', assignmentRoutes);
 app.use('/api/documents', documentRoutes);
+app.use('/api/quizzes', quizRoutes);
 
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 

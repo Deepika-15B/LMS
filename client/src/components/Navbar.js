@@ -51,12 +51,12 @@ const Navbar = () => {
               <FaChalkboardTeacher /> {user.role === 'admin' ? 'Admin Panel' : 'Dashboard'}
             </Link>
 
-            <Link to="/student/courses" className={`nav-link ${isActive('/student/courses') ? 'active' : ''}`} onClick={closeMenu}>
-              <FaBook /> Courses
+            <Link to="/student/quizzes" className={`nav-link ${isActive('/student/quizzes') ? 'active' : ''}`} onClick={closeMenu}>
+              <FaBook /> Quizzes
             </Link>
             
             <Link to="/notes" className={`nav-link ${isActive('/notes') ? 'active' : ''}`} onClick={closeMenu}>
-              <FaFolderOpen /> Resources
+              <FaFolderOpen /> Notes
             </Link>
 
             <Link to="/prerequisites" className={`nav-link ${isActive('/prerequisites') ? 'active' : ''}`} onClick={closeMenu}>
