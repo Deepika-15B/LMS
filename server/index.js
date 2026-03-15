@@ -26,7 +26,7 @@ const allowedOrigins = [
   'http://localhost:3001',
   'http://127.0.0.1:3000',
   'http://127.0.0.1:3001',
-  'https://learnit-48dq.vercel.app'
+   'https://lms-cq22.vercel.app'
 ].filter(Boolean);
 
 
