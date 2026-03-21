@@ -5,13 +5,13 @@ dotenv.config({ path: path.join(__dirname, '../.env') });
 
 const seedAdmin = async () => {
   try {
-    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/learnit';
+    const mongoUri = process.env.MONGODB_URI || 'mongodb://localhost:27017/skillup';
     await mongoose.connect(mongoUri, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
     });
 
-    const existingAdmin = await User.findOne({ email: 'admin@learnit.com' });
+    const existingAdmin = await User.findOne({ email: 'admin@skillup.com' });
     if (existingAdmin) {
        console.log('Admin already exists.');
        process.exit(0);
@@ -22,14 +22,14 @@ const seedAdmin = async () => {
 
     const adminUser = new User({
       username: 'admin',
-      email: 'admin@learnit.com',
+      email: 'admin@skillup.com',
       password: hashedPassword,
       role: 'admin',
       fullName: 'System Administrator'
     });
 
     await adminUser.save();
-    console.log('Admin user seeded successfully. credentials: admin@learnit.com / adminpassword');
+    console.log('Admin user seeded successfully. credentials: admin@skillup.com / adminpassword');
     process.exit(0);
 
   } catch (err) {

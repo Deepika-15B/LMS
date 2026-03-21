@@ -1,6 +1,6 @@
 services:
   - type: web
-    name: learnit-backend
+    name: skillup-backend
     env: node
     buildCommand: npm install
     startCommand: npm start

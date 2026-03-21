@@ -1,5 +1,5 @@
 {
-  "name": "online-learning-system",
+  "name": "skillup-lms",
   "version": "1.0.0",
   "description": "Full-stack online learning management system using MERN stack",
   "main": "server/index.js",

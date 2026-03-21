@@ -98,7 +98,7 @@ const Sidebar = ({ onToggle }) => {
       <div className="sidebar-header">
         <Link to="/" className="sidebar-brand">
           <FaGraduationCap className="brand-icon" />
-          {!isCollapsed && <span>LEARNIT</span>}
+          {!isCollapsed && <span>SKILLUP</span>}
         </Link>
         <button className="sidebar-toggle" onClick={toggleSidebar}>
           {isCollapsed ? <FaBars /> : <FaTimes />}

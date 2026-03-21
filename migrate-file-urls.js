@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const Assignment = require('./server/models/Assignment');
 
 // Connect to MongoDB
-mongoose.connect('mongodb://localhost:27017/learnit', {
+mongoose.connect('mongodb://localhost:27017/skillup', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })

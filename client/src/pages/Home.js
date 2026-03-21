@@ -132,7 +132,7 @@ const Home = () => {
         <div className="container">
           <div className="section-header text-center">
             <h2 className="section-title">Platform Impact</h2>
-            <p className="section-subtitle">Join thousands growing together on LEARNIT.</p>
+            <p className="section-subtitle">Join thousands growing together on SKILLUP.</p>
           </div>
           <div className="stats-grid">
             <div className="card stat-card">

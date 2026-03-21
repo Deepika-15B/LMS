@@ -83,7 +83,7 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/learnit', {
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/skillup', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 })
@@ -101,7 +101,7 @@ app.use('/api/meetings', meetingRoutes);
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 app.get('/', (req, res) => {
-  res.json({ message: 'LEARNIT API is running!' });
+  res.json({ message: 'SKILLUP API is running!' });
 });
 
 app.listen(PORT, () => {

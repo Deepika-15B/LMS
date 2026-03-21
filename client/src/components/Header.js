@@ -9,7 +9,7 @@ const Header = () => {
       <div className="header-container">
         <Link to="/" className="header-brand">
           <FaGraduationCap className="brand-icon" />
-          <span>LEARNIT</span>
+          <span>SKILLUP</span>
         </Link>
         
         <div className="header-auth">

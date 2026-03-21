@@ -38,7 +38,7 @@ const Navbar = () => {
       <div className="navbar-container">
         <Link to="/" className="navbar-brand" onClick={closeMenu}>
           <FaGraduationCap className="brand-icon" />
-          <span>LEARNIT</span>
+          <span>SKILLUP</span>
         </Link>
 
         {user && (
